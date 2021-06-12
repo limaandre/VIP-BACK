@@ -72,6 +72,7 @@ router.post('/', async function (req, res, next) {
 });
 
 router.put('/:id', async function (req, res, next) {
+    const idParam = [req.params.id];
     const dataParams = req.body;
     const paramsRequired = ['nome', 'cpf', 'codigoCliente', 'email', 'sexo'];
     const isValid = validateParams(dataParams, paramsRequired);
@@ -81,8 +82,8 @@ router.put('/:id', async function (req, res, next) {
     }
 
     const { nome, cpf, codigoCliente, email, sexo } = dataParams;
-    const sql = `update cliente set codigoCliente = ?, nome = ?, CPF = ?, email = ?, sexo = ?;`;
-    const params = [codigoCliente, nome, cpf, email, sexo];
+    const sql = `update cliente set codigoCliente = ?, nome = ?, CPF = ?, email = ?, sexo = ? where id = ?;`;
+    const params = [codigoCliente, nome, cpf, email, sexo, idParam];
    
     db.run(sql, params, (err) => {
         if (err) {
