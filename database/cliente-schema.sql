@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS Cliente
+( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    codigoCliente TEXT NOT NULL, 
+    nome TEXT NOT NULL, 
+    CPF INTEGER NOT NULL, 
+    email TEXT NOT NULL,
+    sexo TEXT NOT NULL
+);
