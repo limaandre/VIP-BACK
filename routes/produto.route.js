@@ -16,7 +16,7 @@ const validateParams = (params, paramsRequired) => {
 }
 
 router.get('/', (req, res) => {
-    const sql = 'select * from produto';
+    const sql = 'select * from produto order by id desc';
     const params = [];
     db.all(sql, params, (err, rows) => {
         if (err) {

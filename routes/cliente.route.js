@@ -15,7 +15,7 @@ const validateParams = (params, paramsRequired) => {
 }
 
 router.get('/', (req, res) => {
-    const sql = 'select * from cliente';
+    const sql = 'select * from cliente order by id desc';
     const params = [];
     db.all(sql, params, (err, rows) => {
         if (err) {
@@ -96,7 +96,7 @@ router.put('/:id', async function (req, res, next) {
     });
 });
 
-router.delete('/:id', async function (req, res, next) {
+router.delete('/:id', async function (req, res, next) { 
     const sql = 'delete from cliente where id = ?';
     const params = [req.params.id];
     db.run(sql, params, (err, result) => {
